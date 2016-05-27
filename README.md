@@ -7,6 +7,11 @@ Introduction
 ------------
 Geppetto is an automation and management framework for distributed systems. 
 
+**Designed with Key Principles:**
+* Modularity: Extendable. Easy to add functionality.
+* Powerful: Includes functionality for installing, managing, and testing.
+* Flexible: Full power of Python.
+* Easy: Abstracts all the heavy lifting so you can focus on getting the job done.
 
 Requirements
 ------------
@@ -49,7 +54,7 @@ python -m run -t tests/demos/hello_world.py -c configs/demos/sample_config.py
 Enabling Email Settings
 -----------------------
 To enable emailing, update email configuration settings in common/common.py 
-and add -e flag with email
+and add -e flag with email address.
 
 **example:**
 ```
