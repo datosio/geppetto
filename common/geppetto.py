@@ -65,9 +65,9 @@ class Geppetto(object):
         # Do an initial validation of the systems.
         self._do_init_check()
 
-    def set_init_params(self, configuration_dict, args, test_name):
+    def set_init_params(self, configuration_dict, args, test_name, config_name):
         self.test_name = test_name
-        self.config_name = configuration_dict['config_name']
+        self.config_name = config_name
         self.configuration_dict = configuration_dict
         self.start_time = time.time()
         self.upload = args.upload
@@ -119,6 +119,7 @@ class Geppetto(object):
         Handle any sys exit exceptions ... tear down any processes necessary.
         :return:
         """
+        report(' ', no_date=True, no_level=True)
         update_status('Test Complete')
         self.complete()
 
@@ -140,13 +141,12 @@ class Geppetto(object):
         msg = 'Test Update.\n\n'
         msg += '    Name:      %s\n' % self.test_name
         msg += '    Config:    %s\n' % self.config_name
-        msg += '    Commit:    %s\n' % common.global_vars['commit_id']
         msg += '    Log:       %s\n' %  self.log_dir
         msg += '    Time:      %s\n' % seconds_to_days_hours_min_sec_string(time.time() - self.start_time)
-        msg += '    Traces:    %s\n' % common.global_vars['traceback_count']
-        msg += '    Errors:    %s\n' % common.global_vars['error_count']
-        msg += '\nCheckpoints:\n%s\n' % checkpoint_results
-        msg += '\nMessages:\n%s' % notes
+        if checkpoint_results:
+            msg += '\nCheckpoints:\n%s\n' % checkpoint_results
+        if notes:
+            msg += '\nMessages:\n%s' % notes
 
         # Playing with the formatting a bit here to create better looking reports.
         msg = '*    %s' % msg.strip('\n').replace('\n', '\n*    ')
@@ -177,23 +177,27 @@ class Geppetto(object):
                     break
 
         # Format completed message.
-        msg = 'Test Completed.\n\n'
-        msg += '    Status:    %s\n' % common.global_vars['test_status'] #self.passed
-        msg += '    Name:      %s\n' % self.test_name
-        msg += '    Config:    %s\n' % self.config_name
-        msg += '    Log:       %s\n' %  self.log_dir
-        msg += '    Time:      %s\n' % seconds_to_days_hours_min_sec_string(time.time() - self.start_time)
+        msg = '  Status:    %s\n' % common.global_vars['test_status'] #self.passed
+        msg += '  Name:      %s\n' % self.test_name
+        msg += '  Config:    %s\n' % self.config_name
+        msg += '  Log:       %s\n' %  self.log_dir
+        msg += '  Time:      %s\n' % seconds_to_days_hours_min_sec_string(time.time() - self.start_time)
 
         if common.global_vars['commit_id']:
-            msg += '    Commit:    %s\n' % common.global_vars['commit_id']
-            msg += '    Traces:    %s\n' % common.global_vars['traceback_count']
-            msg += '    Errors:    %s\n' % common.global_vars['error_count']
+            msg += '  Commit:    %s\n' % common.global_vars['commit_id']
+            msg += '  Traces:    %s\n' % common.global_vars['traceback_count']
+            msg += '  Errors:    %s\n' % common.global_vars['error_count']
 
-        msg += '\nCheckpoints:\n%s\n' % checkpoint_results
-        msg += '\nMessages:\n%s' % notes
+        if checkpoint_results:
+            msg += '\nCheckpoints:\n%s\n' % checkpoint_results
+
+        if notes:
+            msg += '\nMessages:\n%s' % notes
 
         # Playing with the formatting a bit here to create better looking reports.
-        msg = '*    %s' % msg.strip('\n').replace('\n', '\n*    ')
+        msg = '*  %s' % msg.strip('\n').replace('\n', '\n*    ')
+
+        msg = '*' * 70 + '\n' + msg + '\n' + '*' * 70
 
         # Move geppetto logs to log dir.
         os.system('mv ./logs/*.log* %s/' % self.log_dir)

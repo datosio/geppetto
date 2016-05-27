@@ -1,7 +1,7 @@
 # Geppetto
-==========
 by Datos IO
 <http://www.datos.io>
+==========
 
 Introduction
 ------------
@@ -10,8 +10,22 @@ Geppetto is an automation and management framework for distributed systems.
 **Designed with Key Principles:**
 * Modularity: Extendable. Easy to add functionality.
 * Powerful: Includes functionality for installing, managing, and testing.
-* Flexible: Full power of Python.
+* Flexible: Full power and flexibility of Python.
 * Easy: Abstracts all the heavy lifting so you can focus on getting the job done.
+
+**What can be automated:**
+###### Tests
+* Automate 1 or 100's of tests. Test can include full setup, populations, management of a distributed system.
+* Tests can be seconds long or months long.
+
+###### Distributed Databases
+* Cassandra
+* Mongo
+* Installation
+* Population
+* Fault injection
+* Workload simulations
+* Monitoring
 
 Requirements
 ------------

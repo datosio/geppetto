@@ -65,8 +65,8 @@ def main():
 
     # Import the test file.
     try:
-        test_file = args.test_file
-        test_file = test_file[:-3].replace('/', '.')
+        test_file_name = args.test_file
+        test_file = test_file_name[:-3].replace('/', '.')
         mod = __import__(test_file, fromlist=['TestRun'])
         TestRun = getattr(mod, 'TestRun')
     except:
@@ -76,8 +76,8 @@ def main():
 
     # Import the config file.
     try:
-        config_file = args.config
-        config_file = config_file[:-3].replace('/', '.')
+        config_file_name = args.config
+        config_file = config_file_name[:-3].replace('/', '.')
         mod = __import__(config_file, fromlist=['CONFIG_DICT'])
         config_dict = getattr(mod, 'CONFIG_DICT')
     except:
@@ -90,7 +90,7 @@ def main():
     class GeppettoExecutableTest(TestRun):
         def __init__(self):
             Geppetto.__init__(self)
-            TestRun.set_init_params(self, config_dict, args, test_file)
+            TestRun.set_init_params(self, config_dict, args, test_file_name, config_file_name)
 
         @capture_exception_and_abort
         def run(self):

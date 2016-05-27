@@ -16,3 +16,22 @@ COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER I
 OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 """
 
+
+cassandra_source_1 = {
+    "source-name": "cass1",
+	"ips": ['10.0.4.14', '10.2.4.15', '10.2.4.16', '10.2.4.17', '10.2.4.18', '10.2.4.19', '10.2.4.20', '10.2.4.21'],
+	"username": '_username_',
+	"password": '_password_',
+	"key": '~/.ssh/key.pem',
+    "data_dir": '/mnt/cassandra/data',
+    "commit_dir": '/mnt2/cassandra/commitlog',
+    "install_dir": '/mnt3/cassandra/',
+	}
+
+
+#######################################
+# Config_Dict gets imported by Geppetto.
+#######################################
+CONFIG_DICT = {
+	"source_configs": [cassandra_source_1,],
+    }
