@@ -1,0 +1,1 @@
+(id int PRIMARY KEY, collist list<int>, colmap map<int, bigint>, colset set<uuid>, coltext text)

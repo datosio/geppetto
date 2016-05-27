@@ -1,0 +1,1 @@
+(row_id uuid, evt_ts timestamp, chn_id int, evt_payld text, test_uuid uuid, src_sys text, PRIMARY KEY ((row_id), evt_ts, chn_id)) with clustering order by (evt_ts DESC, chn_id ASC)

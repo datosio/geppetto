@@ -60,3 +60,15 @@ target/
 
 #Ipython Notebook
 .ipynb_checkpoints
+
+.project
+.pydevproject
+.settings/*
+
+**.idea
+**.status
+**.log
+logs
+**.pyc
+
+**.DS_Store
