@@ -14,11 +14,11 @@ Geppetto is an automation and management framework for distributed systems.
 * Easy: Abstracts all the heavy lifting so you can focus on getting the job done.
 
 **What can be automated:**
-###### Tests
+**  *Tests* **
 * Automate 1 or 100's of tests. Test can include full setup, populations, management of a distributed system.
 * Tests can be seconds long or months long.
 
-###### Distributed Databases
+** *Distributed Databases* **
 * Cassandra
 * Mongo
 * Installation
