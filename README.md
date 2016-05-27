@@ -1,7 +1,7 @@
 # Geppetto
+==========
 by Datos IO
 <http://www.datos.io>
-==========
 
 Introduction
 ------------
