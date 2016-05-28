@@ -32,7 +32,7 @@ Requirements
 ------------
 ##### System Libraries:
 * SshPass
-* Python 2.
+* Python 2.6 -> 3.4
 
 ##### Python Libraries: 
 * Pymongo
@@ -64,6 +64,17 @@ python -m run -t tests/<test_file_path> -c configs/<config_file_path>
 **Hello world example:**
 ```
 python -m run -t tests/demos/hello_world.py -c configs/demos/sample_config.py
+```
+
+optional arguments:
+```
+  -h, --help            show this help message and exit
+  -t TEST_FILE, --test_file TEST_FILE
+                        Test file.
+  -c CONFIG, --config CONFIG
+                        Configuration file.
+  -e EMAIL, --email EMAIL
+                        Email to send results to.
 ```
 
 Enabling Email Settings

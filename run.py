@@ -30,11 +30,9 @@ from common.geppetto import Geppetto
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument('-t', '--test_file', default="tests/demos/demo.py", help="Test file.")
-    parser.add_argument('-c', '--config', default="configs/demo_config.py", help="Configuration file.")
-    parser.add_argument('-e', '--email', default=None, help="Email to send results to.")
-    parser.add_argument('-u', '--upload', action='store_true')
-    parser.add_argument('--collect_logs', action='store_true')
+    parser.add_argument('-t', '--test_file', required=True, help="Test file.")
+    parser.add_argument('-c', '--config', required=True, help="Configuration file.")
+    parser.add_argument('-e', '--email', help="Email to send results to.")
     return parser.parse_args()
 
 

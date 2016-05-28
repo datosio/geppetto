@@ -70,8 +70,6 @@ class Geppetto(object):
         self.config_name = config_name
         self.configuration_dict = configuration_dict
         self.start_time = time.time()
-        self.upload = args.upload
-        self.collect_logs = args.collect_logs
 
         # Require certain parameters to be in configuration file.  Do all parsing here!!!!! EARLLLYYYY !!!
         required_params = [
